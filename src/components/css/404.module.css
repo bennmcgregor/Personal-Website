@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  height: 100vh;
+  min-height: 525px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.text {
+  padding-top: 10rem;
+  flex: 40%;
+  max-width: 750px;
+}
+
+.leftMargin {
+  flex: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .text {
+    flex: 65%;
+  }
+  .leftMargin {
+    flex: 25%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .text {
+    flex: 80%;
+  }
+  .leftMargin {
+    flex: 10%;
+  }
+}

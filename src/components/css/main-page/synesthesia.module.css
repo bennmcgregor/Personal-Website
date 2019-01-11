@@ -1,0 +1,146 @@
+.container {
+  height: 100vh;
+  min-height: 525px;
+  min-width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #ffffff
+}
+
+.title:hover {
+  color: #222222;
+  animation: fadein 0.4s;
+}
+
+.description {
+  position: relative;
+  top: 0.2rem;
+}
+
+.playbutton {
+  z-index: 200;
+  position: absolute;
+  right: 10%;
+  top: 1.22rem;
+  cursor: pointer;
+}
+
+@keyframes fadein {
+  0% {
+    color: #ffffff;
+  }
+  100% {
+    color: #222222;
+  }
+}
+
+.root {
+  position: relative;
+  cursor: pointer;
+
+  height: 200px;
+  width: 200px;
+}
+
+.bass {
+  position: absolute;
+  bottom: -55%;
+  left: -105%;
+
+  height: 80%;
+  width: 80%;
+}
+
+.fifth {
+  position: absolute;
+  right: -85%;
+  top: -30%;
+
+  height: 60%;
+  width: 60%;
+}
+
+.highest {
+  position: absolute;
+  left: -58%;
+  top: -7%;
+
+  height: 45%;
+  width: 45%;
+}
+
+.remaining {
+  position: absolute;
+  right: -37%;
+  top: 52%;
+
+  height: 25%;
+  width: 25%;
+}
+
+@media screen and (min-width: 1800px) {
+  .root {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+
+
+@media screen and (max-width: 900px) {
+  .bass {
+    top: -45%;
+    left: -105%;
+  }
+
+  .fifth {
+    right: -87%;
+    top: 72%;
+  }
+
+  .highest {
+    left: -60%;
+    top: 117%;
+  }
+
+  .remaining {
+    right: -55%;
+    top: -60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .description {
+    font-size: 0.48rem;
+  }
+
+  .root {
+    height: 110px;
+    width: 110px;
+  }
+
+  .bass {
+    left: 123%;
+    top: 53%;
+  }
+
+  .fifth {
+    left: -78%;
+    top: -38%;
+  }
+
+  .highest {
+    left: 113%;
+    top: -22%;
+  }
+
+  .remaining {
+    left: -37%;
+    top: 45%;
+
+  }
+}

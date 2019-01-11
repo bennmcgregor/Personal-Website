@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  height: 100vh;
+  min-height: 525px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 15vh;
+}
+
+.links {
+  flex: 15%;
+  max-width: 270px;
+}
+
+.centerMargin {
+  flex: 20%;
+  max-width: 360px;
+}
+
+.images {
+  flex: 35%;
+  max-width: 630px;
+}
+
+.leftMargin {
+  flex: 20%;
+}
+
+.description {
+  position: relative;
+  top: 0.4rem;
+}
+
+@media screen and (max-width: 900px) {
+  .links {
+    flex: 15%;
+  }
+  .centerMargin {
+    flex: 15%;
+  }
+  .images {
+    flex: 50%;
+  }
+  .leftMargin {
+    flex: 10%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .rightMargin {
+    flex: 10%;
+  }
+  .links {
+    flex: 80%;
+    max-width: unset;
+  }
+
+  .mobileText {
+    max-width: 200px;
+  }
+
+  .leftMargin {
+    flex: 10%;
+  }
+}

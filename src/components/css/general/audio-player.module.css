@@ -1,0 +1,82 @@
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 225px; /* Full-width */
+  height: 5px; /* Specified height */
+  background: #dedede; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 13px; /* Set a specific slider handle width */
+  height: 5px; /* Slider handle height */
+  background: #000000; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 13px; /* Set a specific slider handle width */
+  height: 5px; /* Slider handle height */
+  background: #000000; /* black background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.time {
+  padding-left: 1.45rem;
+  padding-right: 1.45rem;
+}
+
+.controlButton {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.mediaContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.playing {
+  display: flex;
+  align-items: center;
+  width: 100%
+}
+
+.playerWrapper {
+  position: relative;
+  width: 30%;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
+
+.reactPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .slider {
+    width: 0px;
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 0px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 0px;
+  }
+
+  .time {
+    padding-right: 0;
+  }
+}

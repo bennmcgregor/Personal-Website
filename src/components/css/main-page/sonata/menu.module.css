@@ -1,0 +1,32 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 auto;
+  position: fixed;
+
+  width: 100%;
+  min-width: 320px;
+  z-index: 30;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .links {
+    position: relative;
+    top: -0.9rem;
+  }
+
+  .audio {
+    position: relative;
+    top: -0.9rem;
+  }
+}

@@ -1,0 +1,22 @@
+/* Link Styles */
+.text {
+  color: #222222;
+  text-decoration: none;
+
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.text:hover {
+  /*-webkit-transition: color 0.4s ease;
+  -moz-transition: color 0.4s ease;
+  -o-transition: color 0.4s ease;
+  transition: color 0.4s ease;*/
+  color: #AAAAAA
+}
+
+.text:active {
+  color: #AAAAAA
+}

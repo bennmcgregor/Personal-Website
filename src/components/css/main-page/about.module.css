@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  height: 90vh;
+  min-height: 525px;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  background-color: #414141
+}
+
+.text {
+  padding-top: 10rem;
+  flex: 40%;
+  max-width: 750px;
+  color: #ffffff
+}
+
+.leftMargin {
+  flex: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .text {
+    flex: 65%;
+  }
+  .leftMargin {
+    flex: 25%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .text {
+    flex: 80%;
+  }
+  .leftMargin {
+    flex: 10%;
+  }
+}

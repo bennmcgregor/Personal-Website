@@ -1,0 +1,115 @@
+.container {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 60px;
+  width: 100%;
+}
+
+.rightMargin {
+  flex: 10%;
+  max-width: 360px;
+}
+
+.links {
+  flex: 40%;
+  max-width: 600px;
+  white-space: nowrap;
+}
+
+.text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  height: 100vh;
+  padding-top: 15vh;
+}
+
+.textContent {
+  flex: 40%;
+  max-width: 600px;
+}
+
+.leftMargin {
+  flex: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .textContent, .links {
+    flex: 60%;
+  }
+  .leftMargin {
+    flex: 30%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .textContent, .links {
+    flex: 80%;
+  }
+  .leftMargin {
+    flex: 10%;
+  }
+}
+
+
+/*.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 100%;
+  max-height: 100%;
+
+  z-index: 50;
+
+}
+
+.modalGuts {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  overflow: hidden;
+
+  justify-content: center;
+}
+
+.modalOverlay {
+  z-index: 49;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.imageContainer {
+  height: 50vh;
+}
+
+.textContainer {
+  color: #000000;
+  font-size: 1.5rem;
+  overflow: auto;
+}
+
+.title {
+  font-size: 3rem;
+  margin-top: -1.3rem;
+}*/
