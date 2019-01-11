@@ -8,7 +8,7 @@ _Synesthesia_
 
 An interactive animation for my website's landing page, made with Javascript and Pose for React. It's a visual representation of my own [grapheme-colour synesthesia](https://en.wikipedia.org/wiki/Grapheme-color_synesthesia "Grapheme-Colour Synesthesia") when I read and play musical scores. Each colour corresponds to a different musical note in a chord or melody, and each square's size represents each note's relative harmonic or melodic weight in the music. The animations are generated from a JSON object containing musical data.  
 
-Visit the [site landing page](https://bennmcgregor.com "Landing Page") to click through the different animations and listen to the music that accompanies each one. All playing is my own.  
+Visit the [site landing page](https://bennmcgregor.com/#home "Landing Page") to click through the different animations and listen to the music that accompanies each one. All playing is my own.  
 &nbsp;  
 &nbsp;  
 &nbsp;  

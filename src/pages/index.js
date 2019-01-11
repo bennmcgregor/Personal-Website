@@ -9,6 +9,7 @@ import About from '../components/main-page/about'
 
 const IndexPage = ({data}) => (
   <Layout>
+    <a name="home" href="/#home"/>
     <Header displayType='main'/>
     <Synesthesia />
     <SEO title="hello" keywords-={['gatsby', 'application', 'react']} />
