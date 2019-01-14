@@ -30,17 +30,44 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(result => {
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-        createPage({
-          path: node.fields.slug,
-          component: path.resolve(`./src/templates/description-template.js`),
-          context: {
-            // Data passed to context is available
-            // in page queries as GraphQL variables.
-            slug: node.fields.slug,
-          },
-        })
+        if (node.fields.slug.startsWith("/work")) {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve(`./src/templates/description-template.js`),
+            context: {
+              // Data passed to context is available
+              // in page queries as GraphQL variables.
+              slug: node.fields.slug,
+            },
+          });
+        } else if (node.fields.slug.startsWith("/blog")) {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve(`./src/templates/blog-template.js`),
+            context: {
+              // Data passed to context is available
+              // in page queries as GraphQL variables.
+              slug: node.fields.slug,
+            },
+          });
+        }  
       })
       resolve()
     })
   })
 }
+
+/*
+{
+  work: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/work/.*\\.md$/"}}) {
+    edges {
+      node {
+        fields {
+          slug
+        }
+      }
+    }
+  }
+}
+?? Doesn't work...
+*/
