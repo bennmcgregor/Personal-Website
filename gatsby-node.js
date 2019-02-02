@@ -29,6 +29,11 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `).then(result => {
+      if (result.errors) {
+        reject(result.errors)
+      }
+      //build an array of nodes from only blog posts
+      var blog_posts = [];
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         if (node.fields.slug.startsWith("/work")) {
           createPage({
@@ -41,16 +46,30 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         } else if (node.fields.slug.startsWith("/blog")) {
+          blog_posts.push(node);
           createPage({
             path: node.fields.slug,
-            component: path.resolve(`./src/templates/blog-template.js`),
+            component: path.resolve(`./src/templates/blog-post-template.js`),
             context: {
               // Data passed to context is available
               // in page queries as GraphQL variables.
               slug: node.fields.slug,
             },
           });
-        }  
+        }
+      })
+      //Create blog-list pages
+      const postsPerPage = 6
+      const numPages = Math.ceil(blog_posts.length / postsPerPage)
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+          component: path.resolve("./src/templates/blog-list-template.js"),
+          context: {
+            limit: postsPerPage,
+            skip: i * postsPerPage,
+          },
+        })
       })
       resolve()
     })

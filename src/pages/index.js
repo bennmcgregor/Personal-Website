@@ -7,7 +7,7 @@ import Synesthesia from '../components/main-page/synesthesia/synesthesia'
 import Display from '../components/main-page/display'
 import About from '../components/main-page/about'
 
-const IndexPage = ({data}) => (
+const IndexPage = () => (
   <Layout>
     <a name="home" href="/#home"/>
     <Header displayType='main'/>
