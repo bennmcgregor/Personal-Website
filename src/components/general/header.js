@@ -38,6 +38,10 @@ class Header extends React.Component {
       if (this.state.width >= this.breakpoint) return main('BENN MCGREGOR');
       return main((<img src={logo} alt="logo" style={{width: '25px'}} />));
     }
+    else if (this.props.displayType === 'blog') {
+      if (this.state.width >= this.breakpoint) return blog('BENN\'S BLOG');
+      return blog((<img src={logo} alt="logo" style={{width: '25px'}} />));
+    }
   }
 }
 
@@ -103,5 +107,47 @@ const post = (
     <div className={headerStyles.leftMargin}/>
   </div>
 );
+
+function blog(title) {
+  return (
+    <div>
+      <div className={headerStyles.mainContainer}>
+        <div style={{margin: '0 0 0 2rem'}}>
+          {title}
+        </div>
+        <Link
+          to="/blog/about"
+          style={{
+            margin: '0 0 0 1.45rem',
+          }}
+          className="header-link"
+        >
+          ABOUT
+        </Link>
+        <Link
+          to="/blog/explore"
+          style={{
+            margin: '0 1.45rem',
+          }}
+          state={{
+            pleasant: 'reasonably'
+          }}
+          className="header-link"
+        >
+          EXPLORE
+        </Link>
+        <Link
+          to="/"
+          state={{
+            pleasant: 'reasonably'
+          }}
+          className="header-link"
+        >
+          HOME
+        </Link>
+      </div>
+    </div>
+  )
+};
 
 export default Header

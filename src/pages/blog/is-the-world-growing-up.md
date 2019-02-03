@@ -2,7 +2,7 @@
 title: "Is the World Growing Up?"
 image: "work/earthrise.jpg"
 description: "My TEDx Talk discussing this question"
-showTitle: "true"
+date: "2017-03-27"
 ---
 
 Watch my TEDx talk, _Is the World Growing Up?_

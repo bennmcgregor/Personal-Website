@@ -2,6 +2,7 @@
 title: "Citizen Hacks"
 image: "work/citizen-hacks.gif"
 description: "A hackathon about creating ethical technology"
+date: "2019-09-06"
 ---
 
 ![Citizen Hacks](../../assets/work/citizen-hacks.gif)

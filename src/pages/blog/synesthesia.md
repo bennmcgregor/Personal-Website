@@ -2,6 +2,7 @@
 title: "Synesthesia"
 image: "work/idontundersta.jpg"
 description: "An interactive musical animation for the landing page"
+date: "2019-01-05"
 ---
 
 _Synesthesia_

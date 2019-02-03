@@ -2,6 +2,7 @@
 title: "Music Without Borders"
 image: "work/mwb-logo.jpg"
 description: "An arts-based fundraising campaign for Doctors Without Borders"
+date: "2019-03-31"
 ---
 
 _Music Without Borders_
