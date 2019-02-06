@@ -1,7 +1,7 @@
 .container {
   padding-top: 15vh;
   display: flex;
-  height: 90vh;
+  height: 100vh;
   min-height: 525px;
   align-items: flex-start;
   justify-content: flex-start;

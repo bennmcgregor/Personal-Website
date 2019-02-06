@@ -1,6 +1,6 @@
 ---
 title: "Is the World Growing Up?"
-image: "work/earthrise.jpg"
+image: "work/earthrise-ted.jpg"
 description: "My TEDx Talk discussing this question"
 date: "2017-03-27"
 ---

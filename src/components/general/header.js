@@ -112,9 +112,15 @@ function blog(title) {
   return (
     <div>
       <div className={headerStyles.mainContainer}>
-        <div style={{margin: '0 0 0 2rem'}}>
+        <Link
+          to="/blog"
+          style={{
+            margin: '0 0 0 2rem',
+          }}
+          className="header-link"
+        >
           {title}
-        </div>
+        </Link>
         <Link
           to="/blog/about"
           style={{

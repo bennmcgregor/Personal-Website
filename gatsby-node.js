@@ -24,6 +24,9 @@ exports.createPages = ({ graphql, actions }) => {
               fields {
                 slug
               }
+              frontmatter {
+                image
+              }
             }
           }
         }
@@ -33,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
         reject(result.errors)
       }
       //build an array of nodes from only blog posts
-      var blog_posts = [];
+      var blog_images = [];
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         if (node.fields.slug.startsWith("/work")) {
           createPage({
@@ -46,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         } else if (node.fields.slug.startsWith("/blog")) {
-          blog_posts.push(node);
+          blog_images.push(node.frontmatter.image);
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/blog-post-template.js`),
@@ -54,13 +57,14 @@ exports.createPages = ({ graphql, actions }) => {
               // Data passed to context is available
               // in page queries as GraphQL variables.
               slug: node.fields.slug,
+              img_path: node.frontmatter.image,
             },
           });
         }
       })
       //Create blog-list pages
-      const postsPerPage = 6
-      const numPages = Math.ceil(blog_posts.length / postsPerPage)
+      const postsPerPage = 2
+      const numPages = Math.ceil(blog_images.length / postsPerPage)
       Array.from({ length: numPages }).forEach((_, i) => {
         createPage({
           path: i === 0 ? `/blog` : `/blog/${i + 1}`,
@@ -68,6 +72,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,
+            img_path: blog_images,
           },
         })
       })

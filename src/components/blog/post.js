@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
 import Photo from '../general/photo'
 import Text from '../general/text'
+import getDateString from './helper'
 import styles from '../css/blog/post.module.css'
 
 class Post extends Component {
@@ -21,7 +22,15 @@ class Post extends Component {
         <>
           <div className="right-margin"/>
           <div className={styles.content}>
-            {this.props.title}
+            <Link
+              to={this.props.slug}
+              className="header-link"
+            >
+              <p><b>{this.props.title}</b><br/>
+              {getDateString(this.props.date)}<br/><br/>
+              {this.props.description}<br/><br/></p>
+            </Link>
+            <Photo imagePath={this.props.image}/>
           </div>
           <div className={styles.leftMargin}/>
         </>
