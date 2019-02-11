@@ -37,7 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
       }
       //build an array of nodes from only blog posts
       var blog_images = [];
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      result.data.allMarkdownRemark.edges.forEach(({ node }, index) => {
         if (node.fields.slug.startsWith("/work")) {
           createPage({
             path: node.fields.slug,
