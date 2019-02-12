@@ -17,7 +17,6 @@ export default class BlogList extends React.Component {
         <SEO title="blog" keywords-={['gatsby', 'application', 'react']}/>
         <Header displayType='blog'/>
         { posts.map(({ node }) => {
-          const title = node.frontmatter.title
           const img_name = node.frontmatter.image.split('/')[1]
           //gets the index of the element in the Gatsby Image array that corresponds with the title of the post.
           const index = img.findIndex(img => img.node.childImageSharp.fluid.originalName === img_name);

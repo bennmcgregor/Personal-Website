@@ -1,0 +1,32 @@
+.postArrows {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow {
+  white-space: nowrap;
+}
+
+.arrowContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 45%;
+  text-align: right;
+}
+
+.arrowText {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#justifyRight {
+  text-align: right;
+}
+
+#justifyLeft {
+  text-align: left;
+}

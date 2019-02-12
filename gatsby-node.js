@@ -18,7 +18,21 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allMarkdownRemark {
+        work: allMarkdownRemark(
+          filter: {fileAbsolutePath: {regex: "/work/.*.md$/"}},
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+            }
+          }
+        }
+        blog: allMarkdownRemark(
+          filter: {fileAbsolutePath: {regex: "/blog/.*.md$/"}},
+          sort: {fields: [frontmatter___date], order: DESC}
+        ) {
           edges {
             node {
               fields {
@@ -26,6 +40,16 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 image
+              }
+            }
+            previous {
+              fields {
+                slug
+              }
+            }
+            next {
+              fields {
+                slug
               }
             }
           }
@@ -37,30 +61,39 @@ exports.createPages = ({ graphql, actions }) => {
       }
       //build an array of nodes from only blog posts
       var blog_images = [];
-      result.data.allMarkdownRemark.edges.forEach(({ node }, index) => {
-        if (node.fields.slug.startsWith("/work")) {
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/templates/description-template.js`),
-            context: {
-              // Data passed to context is available
-              // in page queries as GraphQL variables.
-              slug: node.fields.slug,
-            },
-          });
-        } else if (node.fields.slug.startsWith("/blog")) {
-          blog_images.push(node.frontmatter.image);
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/templates/blog-post-template.js`),
-            context: {
-              // Data passed to context is available
-              // in page queries as GraphQL variables.
-              slug: node.fields.slug,
-              img_path: node.frontmatter.image,
-            },
-          });
+      result.data.work.edges.forEach(({ node }) => {
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve(`./src/templates/description-template.js`),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            slug: node.fields.slug,
+          },
+        });
+      })
+      result.data.blog.edges.forEach((element) => {
+        blog_images.push(element.node.frontmatter.image);
+        var prevs = null;
+        var nexts = null;
+        if (element.previous !== null) {
+          prevs = element.previous.fields.slug;
         }
+        if (element.next !== null) {
+          nexts = element.next.fields.slug;
+        }
+        createPage({
+          path: element.node.fields.slug,
+          component: path.resolve(`./src/templates/blog-post-template.js`),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            post_slug: element.node.fields.slug,
+            img_path: element.node.frontmatter.image,
+            prev_slug: prevs,
+            next_slug: nexts,
+          },
+        });
       })
       //Create blog-list pages
       const postsPerPage = 2
