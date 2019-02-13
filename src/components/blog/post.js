@@ -20,7 +20,6 @@ class Post extends Component {
     if (this.state.width > this.breakpoint) {
       return (
         <>
-          <div className="right-margin"/>
           <div className={styles.content}>
             <Link
               to={this.props.slug}
@@ -32,7 +31,6 @@ class Post extends Component {
             </Link>
             <Photo imagePath={this.props.image}/>
           </div>
-          <div className={styles.leftMargin}/>
         </>
       );
     }

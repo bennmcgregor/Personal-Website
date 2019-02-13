@@ -6,3 +6,34 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+
+.arrowContainer {
+  flex: 100%
+}
+
+.leftMargin {
+  flex: 40%;
+}
+
+.content {
+  flex: 50%;
+  max-width: 750px;
+}
+
+@media screen and (max-width: 900px) {
+  .content {
+    flex: 65%;
+  }
+  .leftMargin {
+    flex: 25%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    flex: 80%;
+  }
+  .leftMargin {
+    flex: 10%;
+  }
+}

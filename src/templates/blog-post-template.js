@@ -1,21 +1,19 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 
 import SEO from '../components/general/seo'
 import Layout from "../components/general/layout"
 import Header from "../components/general/header"
 import Photo from '../components/general/photo'
+import Arrows from '../components/blog/arrows'
 import getDateString from '../components/blog/helper'
 import templateStyles from '../components/css/description-template.module.css'
-import styles from '../components/css/blog-post-template.module.css'
 
 export default ({ data }) => {
   const post = data.post;
   const previous = data.previous;
   const next = data.next;
   const img = data.image;
-  console.log('previous: ', previous);
-  console.log('next: ', next);
 
   return (
     <Layout>
@@ -29,36 +27,14 @@ export default ({ data }) => {
           {post.frontmatter.description}<br/><br/></p>
           <Photo imagePath={img.childImageSharp.fluid}/>
           <div dangerouslySetInnerHTML={{ __html: post.html }}/>
-          <div className={styles.postArrows}>
-            <Link
-              className={`${styles.arrowContainer} header-link`}
-              to={previous !== null ? previous.fields.slug : null}
-            >
-              <div
-                className={styles.arrow}
-                style={{display: previous !== null ? 'block' : 'none'}}
-              >
-                &larr;&nbsp;
-              </div>
-              <div className={styles.arrowText} id={styles.justifyLeft}>
-                {previous !== null ? previous.frontmatter.title : ' '}
-              </div>
-            </Link>
-            <Link
-              className={`${styles.arrowContainer} header-link`}
-              to={next !== null ? next.fields.slug : null}
-            >
-              <div className={styles.arrowText} id={styles.justifyRight}>
-                {next !== null ? next.frontmatter.title : ' '}
-              </div>
-              <div
-                className={styles.arrow}
-                style={{display: next !== null ? 'block' : 'none'}}
-              >
-                &nbsp;&rarr;
-              </div>
-            </Link>
-          </div>
+          <Arrows
+            hasPrevious={previous !== null}
+            hasNext={next !== null}
+            previousTitle={previous !== null ? previous.frontmatter.title : ' '}
+            previousSlug={previous !== null ? previous.fields.slug : null}
+            nextTitle={next !== null ? next.frontmatter.title : ' '}
+            nextSlug={next !== null ? next.fields.slug : null}
+          />
         </div>
         <div className={templateStyles.leftMargin}/>
       </div>
