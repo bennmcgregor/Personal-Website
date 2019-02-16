@@ -57,16 +57,16 @@ class Display extends Component {
       <StaticQuery
         query={graphql`
           query {
-            mwb: allMarkdownRemark(filter: {frontmatter: {image: {eq: "work/mwb-logo-text.jpg"}}}) {
+            mwb: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Music Without Borders"}}}) {
               ...markdownInfo
             }
             mwbImage: file(relativePath: { eq: "work/mwb-logo-text.jpg" }) {
               ...imageInfo
             }
-            citizenHacks: allMarkdownRemark(filter: {frontmatter: {image: {eq: "work/citizen-hacks-fast.gif"}}}) {
+            citizenHacks: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Citizen Hacks"}}}) {
               ...markdownInfo
             }
-            musicColour: allMarkdownRemark(filter: {frontmatter: {image: {eq: "work/idontunderstand.jpg"}}}) {
+            musicColour: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Synesthesia"}}}) {
               ...markdownInfo
             }
             musicColourImage: file(relativePath: { eq: "work/idontunderstand.jpg" }) {
@@ -75,7 +75,7 @@ class Display extends Component {
             sonataImage: file(relativePath: { eq: "work/sonata-preview.jpeg" }) {
               ...imageInfo
             }
-            tedTalk: allMarkdownRemark(filter: {frontmatter: {image: {eq: "work/earthrise-ted.jpg"}}}) {
+            tedTalk: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Is the World Growing Up?"}}}) {
               ...markdownInfo
             }
             tedTalkImage: file(relativePath: { eq: "work/earthrise-ted.jpg" }) {
