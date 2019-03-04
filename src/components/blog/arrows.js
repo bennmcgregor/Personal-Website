@@ -7,7 +7,7 @@ const Arrows = (props) => (
   <div className={styles.postArrows}>
     <Link
       className={`${styles.arrowContainer} header-link`}
-      to={props.previousSlug}
+      to={props.hasPrevious ? props.previousSlug : "404"}
     >
       <div
         className={styles.arrow}
@@ -21,7 +21,7 @@ const Arrows = (props) => (
     </Link>
     <Link
       className={`${styles.arrowContainer} header-link`}
-      to={props.nextSlug}
+      to={props.hasNext ? props.nextSlug : "404"}
     >
       <div className={styles.arrowText} id={styles.justifyRight}>
         {props.nextTitle}

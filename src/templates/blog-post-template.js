@@ -15,6 +15,8 @@ export default ({ data }) => {
   const next = data.next;
   const img = data.image;
 
+  console.log(data)
+
   return (
     <Layout>
       <Header displayType='blog'/>

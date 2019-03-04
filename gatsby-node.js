@@ -105,7 +105,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             limit: postsPerPage,
             skip: i * postsPerPage,
-            img_path: blog_images,
+            img_paths: blog_images,
           },
         })
       })

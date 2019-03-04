@@ -14,12 +14,11 @@ const About = () => (
       <div className={aboutStyles.text} style={{color: "#222222"}}>
         <div>ABOUT</div>
         <br/>
-        I love creating. I love it because it brings something new into the world. It also connects people—the creative
-        process is always collaborative. Even when I’m working on a project alone, what I create builds on the knowledge
-        and work of others before me. When I work with others, we tap into the potential of unity in diversity. The greater
-        the scale of collaboration, the greater the creative potential that we can harness.
+        This is a place for sharing interesting ideas, beautiful things, new creations, and anything else compelling
+        that I come across. Come on in to explore, ponder, feel, and wonder with me!
         <br/><br/>
-        Connect with me! Let’s create together.
+        If you'd like to share something, say hi, or ask a question, email <a href="mailto:benn@bennmcgregor.com">
+        benn@bennmcgregor.com</a>.
       </div>
       <div className={aboutStyles.leftMargin}/>
     </div>

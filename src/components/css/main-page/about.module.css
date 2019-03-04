@@ -10,21 +10,21 @@
 
 .text {
   padding-top: 10rem;
-  flex: 40%;
+  flex: 35%;
   max-width: 750px;
   color: #ffffff
 }
 
 .leftMargin {
-  flex: 50%;
+  flex: 55%;
 }
 
 @media screen and (max-width: 900px) {
   .text {
-    flex: 65%;
+    flex: 50%;
   }
   .leftMargin {
-    flex: 25%;
+    flex: 40%;
   }
 }
 

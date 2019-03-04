@@ -11,7 +11,6 @@ import styles from "../components/css/blog/blog-list-template.module.css"
 
 export default class BlogList extends React.Component {
   render() {
-    console.log(this.props.data);
     const posts = this.props.data.allMarkdownRemark.edges;
     const img = this.props.data.image.edges;
     var blogPages = null;
@@ -24,7 +23,8 @@ export default class BlogList extends React.Component {
           <div className="right-margin"/>
           <div className={styles.content}>
             { posts.map(({ node }) => {
-              const img_name = node.frontmatter.image.split('/')[1]
+              const img_name_array = node.frontmatter.image.split('/');
+              const img_name = img_name_array[img_name_array.length-1];
               //gets the index of the element in the Gatsby Image array that corresponds with the title of the post.
               const index = img.findIndex(img => img.node.childImageSharp.fluid.originalName === img_name);
               return (
@@ -91,7 +91,7 @@ export default class BlogList extends React.Component {
 }
 
 export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!, $img_path: [String!]!) {
+  query blogListQuery($skip: Int!, $limit: Int!, $img_paths: [String!]!) {
     allMarkdownRemark(
       filter: {fileAbsolutePath: {regex: "/blog/.*.md$/"}}
       sort: { fields: [frontmatter___date], order: DESC }
@@ -112,7 +112,7 @@ export const blogListQuery = graphql`
         }
       }
     }
-    image: allFile(filter: {relativePath: {in: $img_path}}) {
+    image: allFile(filter: {relativePath: {in: $img_paths}}) {
       edges {
         node {
           childImageSharp {
