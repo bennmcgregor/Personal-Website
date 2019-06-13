@@ -13,9 +13,13 @@ export default ({ data }) => {
   const post = data.post;
   const previous = data.previous;
   const next = data.next;
-  const img = data.image;
 
-  console.log(data)
+  console.log(data);
+
+  //robustness check
+  var img;
+  data.image === null ? img = null : img = data.image.childImageSharp.fluid;
+  if (img === null) console.log("GatsbyImage query returned null for blog post image");
 
   return (
     <Layout>
@@ -27,7 +31,7 @@ export default ({ data }) => {
           <p><b>{post.frontmatter.title}</b><br/>
           {getDateString(post.frontmatter.date)}<br/><br/>
           {post.frontmatter.description}<br/><br/></p>
-          <Photo imagePath={img.childImageSharp.fluid}/>
+          <Photo imagePath={img}/>
           <div dangerouslySetInnerHTML={{ __html: post.html }}/>
           <Arrows
             hasPrevious={previous !== null}

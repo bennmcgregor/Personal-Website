@@ -5,14 +5,17 @@ import Img from 'gatsby-image'
 
 class Photo extends Component {
   render() {
-    if (typeof this.props.imagePath === 'string') {
-      return (
-        <img src={this.props.imagePath} alt="" style={this.props.styles ? this.props.styles : null}></img>
+    if (this.props.imagePath !== null) {
+      if (typeof this.props.imagePath === 'string') {
+        return (
+          <img src={this.props.imagePath} alt="" style={this.props.styles ? this.props.styles : null}></img>
+        );
+      }
+      else return (
+        <Img fluid={this.props.imagePath} style={this.props.styles ? this.props.styles : null}/>
       );
     }
-    else return (
-      <Img fluid={this.props.imagePath} style={this.props.styles ? this.props.styles : null}/>
-    );
+    return null;
   }
 }
 
