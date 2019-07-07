@@ -14,8 +14,6 @@ export default ({ data }) => {
   const previous = data.previous;
   const next = data.next;
 
-  console.log(data);
-
   //robustness check
   var img;
   data.image === null ? img = null : img = data.image.childImageSharp.fluid;

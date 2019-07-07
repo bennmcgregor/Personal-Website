@@ -79,12 +79,12 @@ function main(title) {
         >
           ABOUT
         </Link>
-        {/*<Link
-          to="/"
-          className={headerStyles.link}
+        <Link
+          to="/blog"
+          className="header-link"
         >
           BLOG
-        </Link>*/}
+        </Link>
       </div>
     </div>
   )
@@ -130,7 +130,7 @@ function blog(title) {
         >
           ABOUT
         </Link>
-        <Link
+        {/*<Link
           to="/blog/explore"
           style={{
             margin: '0 1.45rem',
@@ -141,9 +141,12 @@ function blog(title) {
           className="header-link"
         >
           EXPLORE
-        </Link>
+        </Link>*/}
         <Link
           to="/"
+          style={{
+            margin: '0 1.45rem',
+          }}
           state={{
             pleasant: 'reasonably'
           }}

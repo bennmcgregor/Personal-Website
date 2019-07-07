@@ -15,7 +15,7 @@ const About = () => (
         <div>ABOUT</div>
         <br/>
         This is a place for sharing interesting ideas, beautiful things, new creations, and anything else compelling
-        that I come across. Come on in to explore, ponder, feel, and wonder with me!
+        that I come across. Come on in to explore, make connections, feel, and wonder with me!
         <br/><br/>
         If you'd like to share something, say hi, or ask a question, email <a href="mailto:benn@bennmcgregor.com">
         benn@bennmcgregor.com</a>.

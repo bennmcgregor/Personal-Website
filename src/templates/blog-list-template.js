@@ -32,7 +32,8 @@ export default class BlogList extends React.Component {
                   <Post
                     title={node.frontmatter.title}
                     slug={node.fields.slug}
-                    image={img[index].node.childImageSharp.fluid}
+                    //if index===-1, there is no image for the post.
+                    image={index === -1 ? null : img[index].node.childImageSharp.fluid}
                     description={node.frontmatter.description}
                     date={node.frontmatter.date}
                   />
