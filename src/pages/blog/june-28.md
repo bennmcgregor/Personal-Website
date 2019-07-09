@@ -1,7 +1,7 @@
 ---
 title: "Today, 6:00am"
 image: ""
-description: "Our boat glided past Tommy Thompson park and into the wide open lake. The pale, cloudless sky reflected in the glassy water, the horizon a shimmering thread stretched across the blue. It was a landscape out of a Dalí painting—with a dash of enchantment."
+description: "Our boat glided past Tommy Thompson Park and into the wide open lake. The pale, cloudless sky reflected in the glassy water, the horizon a shimmering thread stretched across the blue. It was a landscape out of a Dalí painting—with a dash of enchantment."
 date: "2019-06-28"
 ---
 Against this backdrop, far in the distance, a three-masted sailing ship slowly glided towards us with a Canadian flag waving from its stern. Its translucent sails billowed and glowed light yellow, lit up by the day's new sun.

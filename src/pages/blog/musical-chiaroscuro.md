@@ -1,7 +1,7 @@
 ---
 title: "Musical Chiaroscuro"
 image: "blog/caravaggio-st-matthew.jpg"
-description: "Chiaroscuro, or literally Italian for \"light-dark\", is a painting technique that uses the balance of light and shadow to suggest and enhance the volume of three-dimensional subjects."
+description: "Chiaroscuro, or literally Italian for \"light-dark\", is a painting technique that uses the balance of light and shadow to suggest and enhance the volume of three-dimensional subjects. What does this sound like in music?"
 date: "2019-07-07"
 ---
 &nbsp;  
