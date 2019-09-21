@@ -12,9 +12,13 @@ const About = () => (
     <div className={aboutStyles.container} style={{background: "#ffffff"}}>
       <div className="right-margin"/>
       <div className={aboutStyles.text} style={{color: "#222222"}}>
-        <div>PLACEHOLDER</div>
-        <br/>
-        PLACEHOLDER
+        <div>You've discovered a secret page! Here's a piece of delightful music to celebrate!</div>
+        <br/><br/>
+        <div style={{position: "relative", paddingBottom: "56.25%", paddingTop: "30px", height: "0", overflow: "hidden"}}>
+          <iframe style={{position:"absolute", top: "0", left: "0", width: "100%", height: "100%"}} src="https://www.youtube.com/embed/Lv5u0MfoCkE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        (This page is actually a work in progress, but what fun is that?)
         <br/><br/>
       </div>
       <div className={aboutStyles.leftMargin}/>
