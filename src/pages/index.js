@@ -8,16 +8,18 @@ import Display from '../components/main-page/display'
 import About from '../components/main-page/about'
 
 const IndexPage = () => (
-  <Layout>
-    <a name="home" href="/#home"/>
-    <Header displayType='main'/>
-    <Synesthesia />
+  <>
     <SEO title="hello" keywords-={['gatsby', 'application', 'react']} />
-    <a name="work" href="/#work"/>
-    <Display />
-    <a name="about" href="/#about"/>
-    <About />
-  </Layout>
+    <Layout>
+      <a name="home" href="/#home"/>
+      <Header displayType='main'/>
+      <Synesthesia />
+      <a name="work" href="/#work"/>
+      <Display />
+      <a name="about" href="/#about"/>
+      <About />
+    </Layout>
+  </>
 )
 
 export default IndexPage
