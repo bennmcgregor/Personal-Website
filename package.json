@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "benn-mcgregor-site",
+  "description": "Benn McGregor's Personal Website",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Benn McGregor",
   "dependencies": {
     "@reach/router": "^1.2.1",
     "colormix": "^3.2.0",
@@ -45,10 +45,10 @@
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gatsby build && gh-pages -d public -b master"
+    "deploy": "gatsby build && node ./scripts/deploy-github.js"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^2.2.0",
     "prettier": "^1.15.2"
   },
   "repository": {
