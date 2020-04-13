@@ -5,7 +5,7 @@ ghpages.publish(
   {
     branch: 'master',
     repo: 'https://github.com/bennmcgregor/bennmcgregor.github.io',
-    add: true,
+    message: 'Auto-generated commit, please see https://github.com/bennmcgregor/Personal-Website for source code.'
   },
   () => {
     console.log('Deploy Complete!')
