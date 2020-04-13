@@ -1,0 +1,36 @@
+/* Carousel styles */
+
+.carousel-indicators li {
+    background-color: #cccccc;
+    opacity: 0.5;
+}
+.carousel-indicators .active {
+    background-color: #808080;
+}
+
+/* Link styles */
+
+a:link {
+    color: #000000;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #000000;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    color: #808080;
+    text-decoration: none;
+}
+
+/* Center columns in middle of container */
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
