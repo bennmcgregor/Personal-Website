@@ -1,0 +1,11 @@
+.note {
+  position: absolute;
+  top: 40%;
+  left: 23%;
+
+  width: 3%;
+  padding: 3%;
+  box-sizing: border-box;
+
+  background-color: #000;
+}

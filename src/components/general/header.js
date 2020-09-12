@@ -79,12 +79,12 @@ function main(title) {
         >
           ABOUT
         </Link>
-        <Link
+        {/*<Link
           to="/blog"
           className="header-link"
         >
           BLOG
-        </Link>
+        </Link>*/}
       </div>
     </div>
   )

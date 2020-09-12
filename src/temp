@@ -1,0 +1,20 @@
+database structure:
+
+collection interactive-synesthesia
+[
+    {
+        _id: ObjectId()
+        updated: Date()
+        painting: [
+            {
+                _id: ObjectId()
+                position: { top: number, left: a_percent }
+                z_index: int
+                colors: ["hexcode1", "hexcode2", etc]
+                size: [float_mult_of_smallest_val, etc]
+                pitch: [float, float, etc]
+                times: [0, float, float, 1]
+            },
+        ]
+    },
+]
