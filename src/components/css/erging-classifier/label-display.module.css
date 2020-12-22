@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  width: 75%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  padding-left: 5px;
+}
+
+.buttonContainer {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

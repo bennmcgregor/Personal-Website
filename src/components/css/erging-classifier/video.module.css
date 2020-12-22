@@ -1,0 +1,25 @@
+.videoPlayer {
+  /*width: 75%;
+  height: 75%;
+  padding-bottom: 20px;*/
+  width: 100%;
+  display: block;
+}
+
+.content {
+  --content-url: '';
+  position: relative;
+  width: 75%;
+  height: 75%;
+  padding-bottom: 20px;
+}
+
+.content:before {
+  content: var(--content-url);
+  position: absolute;
+  padding: 20px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 10;
+}
