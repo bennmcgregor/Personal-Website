@@ -1,25 +1,26 @@
 import React, { useRef } from "react"
 
+import { STATES } from '../../pages/erging-classifier'
 import videoStyles from '../css/erging-classifier/video.module.css'
 
-function VideoDisplay({ mediaStream, vidSrc, isLabeling, isRecording }) {
+function VideoDisplay({ mediaStream, vidSrc, displayState }) {
 
   const videoRef = useRef();
   const contentRef = useRef();
 
-  if (!isLabeling && mediaStream && videoRef.current && !videoRef.current.srcObject) {
+  if (displayState === STATES.HOME && mediaStream && videoRef.current && !videoRef.current.srcObject) {
     videoRef.current.srcObject = mediaStream;
     videoRef.current.src = null;
   }
 
-  if (isLabeling && vidSrc) {
+  if (displayState === STATES.REVIEWING && vidSrc) {
     videoRef.current.srcObject = null;
     videoRef.current.src = vidSrc;
     videoRef.current.load();
   }
 
   if (contentRef.current && contentRef.current.style) {
-    if (isRecording) {
+    if (displayState === STATES.RECORDING) {
       contentRef.current.style.setProperty('--content-url', 'url(https://upload.wikimedia.org/wikipedia/commons/0/02/Red_Circle%28small%29.svg)')
     } else {
       contentRef.current.style.setProperty('--content-url', '');
@@ -36,7 +37,7 @@ function VideoDisplay({ mediaStream, vidSrc, isLabeling, isRecording }) {
         className={videoStyles.videoPlayer}
         ref={videoRef}
         onCanPlay={handleCanPlay}
-        controls={isLabeling}
+        controls={displayState === STATES.REVIEWING || displayState === STATES.LABELING}
         autoPlay
         playsInline
       />

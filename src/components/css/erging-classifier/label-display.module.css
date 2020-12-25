@@ -8,12 +8,22 @@
   flex-direction: column;
 }
 
-.label {
+.labelLeft {
   padding-left: 5px;
 }
 
-.buttonContainer {
+.labelRight {
+  padding-right: 5px;
+}
+
+.rightContainer {
   margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.leftContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

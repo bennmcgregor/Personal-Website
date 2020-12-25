@@ -7,6 +7,7 @@ import Layout from '../components/general/layout'
 import SEO from '../components/general/seo'
 import VideoDisplay from '../components/erging-classifier/video-display'
 import LabelDisplay from '../components/erging-classifier/label-display'
+import ReviewDisplay from '../components/erging-classifier/review-display'
 import ErgingClassifierInfoDisplay from '../components/erging-classifier/info-display'
 import styles from '../components/css/erging-classifier/erging-classifier.module.css'
 
@@ -20,35 +21,41 @@ const RECORDING_OPTIONS = {
 
 // TODO: retrieve labels from remote server
 const LABEL_OPTIONS = {
-  BACK_PIVOT_ERROR: {
+  BACK_PIVOTING: {
     unique: false,
-    label: 'BackPivotError',
+    label: 'BackPivoting',
   },
-  RUSHING_SLIDE: {
+  POSTURE: {
     unique: false,
-    label: 'RushingSlide',
+    label: 'Posture',
   },
-  KNEES_BREAK_ERROR: {
+  HAND_KNEE_TIMING: {
     unique: false,
-    label: 'KneesBreakError',
+    label: 'HandKneeTiming',
   },
-  COLLAPSED_BACK: {
+  DRIVE_RECOVERY_RATIO: {
     unique: false,
-    label: 'CollapsedBack',
+    label: 'DriveRecoveryRatio',
   },
-  CORRECT_ROWING: {
+  NO_LABEL: {
     unique: true,
-    label: 'CorrectRowing',
-  },
+    label: 'NO LABEL',
+  }
 }
 
 const CLIP_LENGTH = 9000;
 
+export const STATES = {
+  HOME: 'home',
+  RECORDING: 'recording',
+  REVIEWING: 'reviewing',
+  LABELING: 'labeling',
+};
+
 function ErgingClassifierPage() {
   const [mediaStream, setMediaStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
-  const [isRecording, setIsRecording] = useState(false);
-  const [isLabeling, setIsLabeling] = useState(false);
+  const [displayState, setDisplayState] = useState(STATES.HOME);
   const [db, setDB] = useState(null);
   const [recordedVideos, setRecordedVideos] = useState(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -126,35 +133,39 @@ function ErgingClassifierPage() {
   // listen to page state change
   useEffect(() => {
     async function update() {
-      if (db && isLabeling) {
-        // initialize the new set of clips to iterate over for labeling
-        const videos = await db.clips.toCollection().primaryKeys();
-        setRecordedVideos(videos);
-        console.log(videos);
-
-        if (currentVidSrc) {
-          window.URL.revokeObjectURL(currentVidSrc);
-        }
-        if (videos.length > 0) {
-          const videoRecord = await db.clips.get(videos[currentVideoIndex]);
+      if (displayState === STATES.LABELING) {
+        if (recordedVideos.length > 0) {
+          const videoRecord = await db.clips.get(recordedVideos[currentVideoIndex]);
           console.log(videoRecord);
           const url = URL.createObjectURL(videoRecord.data);
           setCurrentVidSrc(url);
         }
-  
+
         // eventually: retrieve the label_options data from the server
-      } else if (db && !isLabeling && recordedVideos) {
+      } else if (displayState === STATES.HOME && recordedVideos) {
         // if the database isn't empty, download all the files in the database
         // with filename label-id.webm (eventually: send the data to a server)
         const numRecords = await db.clips.toCollection().count();
         if (numRecords > 0) {
           const zip = new JSZip();
-          for (const id of recordedVideos) {
+          const sortedVideos = recordedVideos.sort();
+          for (const id of sortedVideos) {
             const record = await db.clips.get(id);
-            const filename = "";
-            record.labels.forEach((label) => {
-              filename = filename + `${label}-`;
-            })
+            let filename = "";
+            for (const [key, value] of Object.entries(LABEL_OPTIONS)) {
+              if (record.labels.includes(key) && key === 'NO_LABEL') {
+                filename = "";
+                break;
+              }
+              if (record.labels.includes(key)) {
+                filename = filename + `${value.label}-strong-`;
+              } else {
+                if (key === 'NO_LABEL') {
+                  continue;
+                }
+                filename = filename + `${value.label}-tired-`;
+              }
+            }
             filename = filename + `${Date.now().toString()}.mp4`;
             zip.file(filename, record.data);
           }
@@ -171,21 +182,69 @@ function ErgingClassifierPage() {
     }
 
     update();
-  }, [isLabeling, db])
+  }, [displayState, db])
+
+  useEffect(() => {
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+    
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+    
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+    
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+    
+      return array;
+    }
+
+    async function update() {
+      if (displayState === STATES.REVIEWING) {
+        // initialize the new set of clips to iterate over for labeling
+        let videos = await db.clips.toCollection().primaryKeys();
+        videos = shuffle(videos);
+        setRecordedVideos(videos);
+        console.log(videos);
+
+        if (currentVidSrc) {
+          window.URL.revokeObjectURL(currentVidSrc);
+        }
+        if (videos.length > 0) {
+          const videoRecord = await db.clips.get(videos[currentVideoIndex]);
+          console.log(videoRecord);
+          const url = URL.createObjectURL(videoRecord.data);
+          setCurrentVidSrc(url);
+        }
+      } else if (displayState === STATES.LABELING) {
+        if (currentVidSrc) {
+          window.URL.revokeObjectURL(currentVidSrc);
+        }
+        setCurrentVidSrc(null);
+        setCurrentVideoIndex(0);
+      }
+    }
+
+    update();
+  }, [displayState, db])
 
   function toggleRecording() {
     if (mediaRecorder) {
-      if (!isRecording) {
-        setIsRecording(true);
+      if (displayState === STATES.HOME) {
+        setDisplayState(STATES.RECORDING);
         mediaRecorder.start();
         initializeTimer();
         // TODO: clean up current processes (if necessary)
-      } else {
-        setIsRecording(false);
+      } else if (displayState === STATES.RECORDING) {
         mediaRecorder.stop();
         clearInterval(timer);
         setTimer(null);
-        setIsLabeling(true);
+        setDisplayState(STATES.REVIEWING);
       }
     }
   }
@@ -198,33 +257,69 @@ function ErgingClassifierPage() {
     setTimer(interval);
   }
 
-  async function onLabelSubmitted(labels) {
+  async function onLabelSubmitted(labels, isNext) {
     // label the current video, move to the next one
     const id = recordedVideos[currentVideoIndex];
-    const labelValues = labels.map(label => LABEL_OPTIONS[label].label);
     db.transaction('rw', db.clips, async () => {
       const updated = await db.clips.update(id, {
-        labels: labelValues,
+        labels
       });
       if (updated) {
-        console.log(`Labeled new video clip ${id} with labels ${labelValues}`);
+        console.log(`Labeled new video clip ${id} with labels ${labels}`);
       }
     }).catch(err => console.error("Error: Could not label the current video clip"));
     
-    if (currentVideoIndex == recordedVideos.length - 1) {
-      setIsLabeling(false);
+    let newIndex = currentVideoIndex;
+
+    if (isNext && currentVideoIndex === recordedVideos.length - 1) {
+      setDisplayState(STATES.HOME);
+      return;
+    } else if (isNext) {
+      newIndex += 1;
     } else {
-      setCurrentVideoIndex(currentVideoIndex + 1);
-
-      if (currentVidSrc) {
-        window.URL.revokeObjectURL(currentVidSrc);
-      }
-
-      // set video source
-      const videoRecord = await db.clips.get(recordedVideos[currentVideoIndex + 1]);
-      const url = URL.createObjectURL(videoRecord.data);
-      setCurrentVidSrc(url);
+      newIndex -= 1;
     }
+
+    setCurrentVideoIndex(newIndex);
+
+    if (currentVidSrc) {
+      window.URL.revokeObjectURL(currentVidSrc);
+    }
+
+    // set video source
+    const videoRecord = await db.clips.get(recordedVideos[newIndex]);
+    const url = URL.createObjectURL(videoRecord.data);
+    setCurrentVidSrc(url);
+  }
+
+  async function onNextVideo() {
+    setCurrentVideoIndex(currentVideoIndex + 1);
+
+    if (currentVidSrc) {
+      window.URL.revokeObjectURL(currentVidSrc);
+    }
+
+    // set video source
+    const videoRecord = await db.clips.get(recordedVideos[currentVideoIndex + 1]);
+    const url = URL.createObjectURL(videoRecord.data);
+    setCurrentVidSrc(url);
+  }
+
+  async function onPrevVideo() {
+    setCurrentVideoIndex(currentVideoIndex - 1);
+
+    if (currentVidSrc) {
+      window.URL.revokeObjectURL(currentVidSrc);
+    }
+
+    // set video source
+    const videoRecord = await db.clips.get(recordedVideos[currentVideoIndex - 1]);
+    const url = URL.createObjectURL(videoRecord.data);
+    setCurrentVidSrc(url);
+  }
+
+  function onReadyToLabel() {
+    setDisplayState(STATES.LABELING);
   }
 
   return (
@@ -232,17 +327,28 @@ function ErgingClassifierPage() {
       <SEO title="Erging Classifier" keywords-={['gatsby', 'application', 'react']}/>
       <div className={styles.verticalLayout}>
         <ErgingClassifierInfoDisplay />
-        <VideoDisplay mediaStream={mediaStream} vidSrc={currentVidSrc} isLabeling={isLabeling} isRecording={isRecording} />
-        { isLabeling ? 
-          <LabelDisplay
-            labelOptions={LABEL_OPTIONS}
-            onLabelSubmitted={onLabelSubmitted}
-            currentClipNum={currentVideoIndex ? currentVideoIndex + 1 : 1}
-            totalClips={recordedVideos ? recordedVideos.length : 0}
-          /> :
-          <button onClick={toggleRecording} disabled={!mediaRecorder}>
-            {isRecording ? 'STOP RECORDING' : 'START RECORDING'}
-          </button>
+        <VideoDisplay mediaStream={mediaStream} vidSrc={currentVidSrc} displayState={displayState} />
+        { displayState === STATES.REVIEWING ?
+            <ReviewDisplay
+              onNextVideo={onNextVideo}
+              onPrevVideo={onPrevVideo}
+              onReadyToLabel={onReadyToLabel}
+              currentClipNum={currentVideoIndex ? currentVideoIndex + 1 : 1}
+              totalClips={recordedVideos ? recordedVideos.length : 0}
+            />
+          :
+            ( displayState === STATES.LABELING ?
+                <LabelDisplay
+                  labelOptions={LABEL_OPTIONS}
+                  onLabelSubmitted={onLabelSubmitted}
+                  currentClipNum={currentVideoIndex ? currentVideoIndex + 1 : 1}
+                  totalClips={recordedVideos ? recordedVideos.length : 0}
+                />
+              :
+                <button onClick={toggleRecording} disabled={!mediaRecorder}>
+                  {displayState === STATES.RECORDING ? 'STOP RECORDING' : 'START RECORDING'}
+                </button>
+            )
         }
       </div>
     </Layout>

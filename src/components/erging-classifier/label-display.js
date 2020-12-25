@@ -40,31 +40,38 @@ function LabelDisplay({ labelOptions, onLabelSubmitted, currentClipNum, totalCli
     setLabels(newLabels);
   }
 
-  function submitLabel() {
-    onLabelSubmitted(labels);
+  function nextLabel() {
+    onLabelSubmitted(labels, true);
   }
 
   return (
     <div className={styles.container}>
-      <form className={styles.form} ref={formRef}>
-        {Object.entries(labelOptions).map(([key, value]) => {
-          return (
-            <div>
-              <input type="checkbox" id={key} onClick={handleLabelSelection}></input>
-              <label className={styles.label} for={key}>
-                {value.label}
-              </label>
-            </div>
-          );
-        })}
-      </form>
-      <div className={styles.buttonContainer}>
+      <div className={styles.leftContainer}>
+        <p>
+          Strong: <b>Checked</b>, Tired: <b>Unchecked</b>
+        </p>
+        <form className={styles.form} ref={formRef}>
+          {Object.entries(labelOptions).map(([key, value]) => {
+            return (
+              <div>
+                <input type="checkbox" id={key} onClick={handleLabelSelection}></input>
+                <label className={styles.label} for={key}>
+                  {value.label}
+                </label>
+              </div>
+            );
+          })}
+        </form>
+      </div>
+      <div className={styles.rightContainer}>
         <div>
           Video Clip {currentClipNum} / {totalClips}
         </div>
-        <button onClick={submitLabel}>
-          Submit labels
-        </button>
+        <div className={styles.container}>
+          <button onClick={nextLabel}>
+            Submit label
+          </button>
+        </div>
       </div>
     </div>
   );

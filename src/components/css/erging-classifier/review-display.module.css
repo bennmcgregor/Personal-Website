@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  width: 75%;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ready {
+  margin-top: 20px;
+  align-self: center;
+}
