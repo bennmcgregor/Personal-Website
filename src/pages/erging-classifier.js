@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Dexie from 'dexie'
 import JSZip from 'jszip'
 import FileSaver from 'file-saver'
@@ -21,26 +21,9 @@ const RECORDING_OPTIONS = {
 
 // TODO: retrieve labels from remote server
 const LABEL_OPTIONS = {
-  BACK_PIVOTING: {
-    unique: false,
-    label: 'BackPivoting',
-  },
-  POSTURE: {
-    unique: false,
-    label: 'Posture',
-  },
-  HAND_KNEE_TIMING: {
-    unique: false,
-    label: 'HandKneeTiming',
-  },
-  DRIVE_RECOVERY_RATIO: {
-    unique: false,
-    label: 'DriveRecoveryRatio',
-  },
-  NO_LABEL: {
-    unique: true,
-    label: 'NO LABEL',
-  }
+  BASELINE: 'Baseline',
+  BELOW_BASELINE: 'Below Baseline',
+  NO_LABEL: 'No Label',
 }
 
 const CLIP_LENGTH = 9000;
@@ -118,7 +101,7 @@ function ErgingClassifierPage() {
   useEffect(() => {
     function initializeDB() {
       const database = new Dexie("ClipDatabase");
-      database.version(1).stores({ clips: "++id,*labels" });
+      database.version(1).stores({ clips: "++id,*label" });
       database.open().catch((err) => {
         console.error(err.stack || err);
       })
@@ -152,19 +135,8 @@ function ErgingClassifierPage() {
           for (const id of sortedVideos) {
             const record = await db.clips.get(id);
             let filename = "";
-            for (const [key, value] of Object.entries(LABEL_OPTIONS)) {
-              if (record.labels.includes(key) && key === 'NO_LABEL') {
-                filename = "";
-                break;
-              }
-              if (record.labels.includes(key)) {
-                filename = filename + `${value.label}-strong-`;
-              } else {
-                if (key === 'NO_LABEL') {
-                  continue;
-                }
-                filename = filename + `${value.label}-tired-`;
-              }
+            if (record.label !== 'NO_LABEL') {
+              filename = `${record.label}-`;
             }
             filename = filename + `${Date.now().toString()}.mp4`;
             zip.file(filename, record.data);
@@ -221,12 +193,6 @@ function ErgingClassifierPage() {
           const url = URL.createObjectURL(videoRecord.data);
           setCurrentVidSrc(url);
         }
-      } else if (displayState === STATES.LABELING) {
-        if (currentVidSrc) {
-          window.URL.revokeObjectURL(currentVidSrc);
-        }
-        setCurrentVidSrc(null);
-        setCurrentVideoIndex(0);
       }
     }
 
@@ -257,15 +223,15 @@ function ErgingClassifierPage() {
     setTimer(interval);
   }
 
-  async function onLabelSubmitted(labels, isNext) {
+  async function onLabelSubmitted(label, isNext) {
     // label the current video, move to the next one
     const id = recordedVideos[currentVideoIndex];
     db.transaction('rw', db.clips, async () => {
       const updated = await db.clips.update(id, {
-        labels
+        label
       });
       if (updated) {
-        console.log(`Labeled new video clip ${id} with labels ${labels}`);
+        console.log(`Labeled new video clip ${id} with label ${label}`);
       }
     }).catch(err => console.error("Error: Could not label the current video clip"));
     
@@ -319,6 +285,11 @@ function ErgingClassifierPage() {
   }
 
   function onReadyToLabel() {
+    if (currentVidSrc) {
+      window.URL.revokeObjectURL(currentVidSrc);
+    }
+    setCurrentVidSrc(null);
+    setCurrentVideoIndex(0);
     setDisplayState(STATES.LABELING);
   }
 

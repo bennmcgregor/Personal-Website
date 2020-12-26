@@ -13,7 +13,7 @@ function VideoDisplay({ mediaStream, vidSrc, displayState }) {
     videoRef.current.src = null;
   }
 
-  if (displayState === STATES.REVIEWING && vidSrc) {
+  if ((displayState === STATES.REVIEWING || displayState === STATES.LABELING) && vidSrc) {
     videoRef.current.srcObject = null;
     videoRef.current.src = vidSrc;
     videoRef.current.load();
