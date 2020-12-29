@@ -37,14 +37,13 @@ function ErgingClassifierInfoDisplay() {
         <li className={styles.listItem}>
           You'll be doing a 15-minute workout that is designed to tire you out to the point that your weaknesses in form become visible 
           at different rates. So make sure that you get a good race warmup and push yourself to your limits during the workout. The workout
-          will be 5 sets of (2' @cat 5, 1' @cat 3), where the the cat 5 piece is done at a rate between 20 and 26, and the cat 3 
-          piece is done at a rate between 28 and 34. Category 3 is your 2k split + 5 seconds, category 5 is your 2k split + 15 seconds. 
-          There is no rest for the entire 15 minutes. Short form notation of the workout: 5 x (2' @cat5 r20-26, 1' @cat3 r28-34). 
-          What you want to prioritize during the entire workout is <b>not</b> total distance, but <b>efficiency</b>, measured as distance 
-          per stroke. Pick a rate within each range that will optimize this statistic while getting you as close to your target split as 
-          possible. <b>Please set up the workout on the monitor as Intervals: Variable, 2 minutes on, 0 minutes rest, 1 minute on, 0 minutes 
-          rest, repeated 5 times.</b> It's imperative that you split up the intervals in this way so that the distance per stroke data can be 
-          measured properly afterwards.
+          will be 5 sets of (1' @cat 3, 2' @cat 5), where the cat 3 piece is done at a rate between 28 and 34, and the cat 5 piece is done 
+          at a rate between 20 and 26. Category 3 is your 2k split + 5 seconds, category 5 is your 2k split + 15 seconds. There is no rest 
+          for the entire 15 minutes. Short form notation of the workout: 5 x (1' @cat3 r28-34, 2' @cat5 r20-26). What you want to prioritize 
+          during the entire workout is <b>not</b> total distance, but <b>efficiency</b>, measured as distance per stroke. Pick a rate within 
+          each range that will optimize this statistic while getting you as close to your target split as possible. <b>Please set up the workout 
+          on the monitor as Intervals: Variable, 1 minute on, 0 minutes rest, 2 minutes on, 0 minutes rest, repeated 5 times.</b> It's imperative 
+          that you split up the intervals in this way so that the distance per stroke data can be measured properly afterwards.
         </li>
         <li className={styles.listItem}>
           Once you're set up, press the "START RECORDING" button below. A red recording icon should appear in the top right corner 
