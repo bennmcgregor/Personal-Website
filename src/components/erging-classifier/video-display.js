@@ -1,11 +1,10 @@
 import React, { useRef } from "react"
 
-import { STATES } from '../../pages/erging-classifier'
+import { STATES } from '../../pages/hidden/erging-classifier'
 import videoStyles from '../css/erging-classifier/video.module.css'
 
-function VideoDisplay({ mediaStream, vidSrc, displayState }) {
+function VideoDisplay({ mediaStream, vidSrc, displayState, videoRef }) {
 
-  const videoRef = useRef();
   const contentRef = useRef();
 
   if (displayState === STATES.HOME && mediaStream && videoRef.current && !videoRef.current.srcObject) {
@@ -38,7 +37,6 @@ function VideoDisplay({ mediaStream, vidSrc, displayState }) {
         ref={videoRef}
         onCanPlay={handleCanPlay}
         controls={displayState === STATES.REVIEWING || displayState === STATES.LABELING}
-        autoPlay
         playsInline
       />
     </div>

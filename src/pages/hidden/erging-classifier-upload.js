@@ -3,13 +3,14 @@ import Dexie from 'dexie'
 import JSZip from 'jszip'
 import FileSaver from 'file-saver'
 
-import Layout from '../components/general/layout'
-import SEO from '../components/general/seo'
-import VideoDisplay from '../components/erging-classifier/video-display'
-import LabelDisplay from '../components/erging-classifier/label-display'
-import ReviewDisplay from '../components/erging-classifier/review-display'
-import ErgingClassifierInfoDisplay from '../components/erging-classifier/info-display'
-import styles from '../components/css/erging-classifier/erging-classifier.module.css'
+import Layout from '../../components/general/layout'
+import SEO from '../../components/general/seo'
+import VideoDisplay from '../../components/erging-classifier/video-display'
+import SeekDisplay from '../../components/erging-classifier/seek-display'
+import LabelDisplay from '../../components/erging-classifier/label-display'
+import ReviewDisplay from '../../components/erging-classifier/review-display'
+// import ErgingClassifierInfoDisplay from '../../components/erging-classifier/info-display'
+import styles from '../../components/css/erging-classifier/erging-classifier.module.css'
 
 const CAPTURE_OPTIONS = {
   video: true,
@@ -21,8 +22,9 @@ const RECORDING_OPTIONS = {
 
 // TODO: retrieve labels from remote server
 const LABEL_OPTIONS = {
-  BASELINE: 'Baseline',
-  BELOW_BASELINE: 'Below Baseline',
+  ABOVE_AVERAGE: 'Above Average',
+  AVERAGE: 'Average',
+  BELOW_AVERAGE: 'Below Average',
   NO_LABEL: 'No Label',
 }
 
@@ -44,6 +46,11 @@ function ErgingClassifierPage() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [currentVidSrc, setCurrentVidSrc] = useState(null);
   const [timer, setTimer] = useState(null);
+
+  const fileRef = useRef();
+  const [fileState, setFileState] = useState(null);
+
+  const videoRef = useRef();
 
   // video display
   useEffect(() => {
@@ -178,7 +185,38 @@ function ErgingClassifierPage() {
 
     async function update() {
       if (displayState === STATES.REVIEWING) {
+        // TEMP
+        // load mp4s into db
+        db.clips.clear();
+
+        for (const file of fileState) {
+          var blob = new Blob([file], { type: "video/mp4" });
+          // save to the database
+          const result = await db.transaction('rw', db.clips, async () => {
+            const id = await db.clips.add({
+              data: blob,
+            });
+            console.log(`Wrote new video clip ${id} to the database`);
+          })//.catch(err => console.error("Could not write new video clip to database"));
+        }
+
         // initialize the new set of clips to iterate over for labeling
+        let videos = await db.clips.toCollection().primaryKeys();
+        videos = shuffle(videos);
+        setRecordedVideos(videos);
+        console.log("videos", videos);
+
+        if (currentVidSrc) {
+          window.URL.revokeObjectURL(currentVidSrc);
+        }
+        if (videos.length > 0) {
+          const videoRecord = await db.clips.get(videos[currentVideoIndex]);
+          console.log(videoRecord);
+          const url = URL.createObjectURL(videoRecord.data);
+          setCurrentVidSrc(url);
+        }
+
+        /* initialize the new set of clips to iterate over for labeling
         let videos = await db.clips.toCollection().primaryKeys();
         videos = shuffle(videos);
         setRecordedVideos(videos);
@@ -192,7 +230,7 @@ function ErgingClassifierPage() {
           console.log(videoRecord);
           const url = URL.createObjectURL(videoRecord.data);
           setCurrentVidSrc(url);
-        }
+        }*/
       }
     }
 
@@ -293,12 +331,25 @@ function ErgingClassifierPage() {
     setDisplayState(STATES.LABELING);
   }
 
+  function onFormSubmit(event) {
+    setFileState(event.target.uploadFile.files);
+    event.preventDefault();
+  }
+
+  useEffect(() => {
+    console.log(fileState)
+  }, [fileState]);
+
   return (
     <Layout>
       <SEO title="Erging Classifier" keywords-={['gatsby', 'application', 'react']}/>
+      <form className="upload" ref={fileRef} onSubmit={onFormSubmit}>
+        <input type="file" name="uploadFile" accept=".mp4" required multiple />
+        <br/><br/>
+        <input type="submit" />
+      </form>
       <div className={styles.verticalLayout}>
-        <ErgingClassifierInfoDisplay />
-        <VideoDisplay mediaStream={mediaStream} vidSrc={currentVidSrc} displayState={displayState} />
+        <VideoDisplay mediaStream={mediaStream} vidSrc={currentVidSrc} displayState={displayState} videoRef={videoRef} />
         { displayState === STATES.REVIEWING ?
             <ReviewDisplay
               onNextVideo={onNextVideo}
@@ -309,7 +360,13 @@ function ErgingClassifierPage() {
             />
           :
             ( displayState === STATES.LABELING ?
-                <LabelDisplay
+              /*<SeekDisplay
+                onLabelSubmitted={onLabelSubmitted}
+                currentClipNum={currentVideoIndex ? currentVideoIndex + 1 : 1}
+                totalClips={recordedVideos ? recordedVideos.length : 0}
+                videoRef={videoRef}
+              />*/
+              <LabelDisplay
                   labelOptions={LABEL_OPTIONS}
                   onLabelSubmitted={onLabelSubmitted}
                   currentClipNum={currentVideoIndex ? currentVideoIndex + 1 : 1}

@@ -16,6 +16,7 @@ class Display extends Component {
       mwbIsHovering: 'none',
       citizenHacksIsHovering: 'none',
       musicColourIsHovering: 'none',
+      catchAnalyzerIsHovering: 'none',
       sonataIsHovering: 'none',
       tedTalkIsHovering: 'none',
       soundCloudIsHovering: 'none',
@@ -84,6 +85,9 @@ class Display extends Component {
             soundCloudImage: file(relativePath: { eq: "work/soundcloud.jpg" }) {
               ...imageInfo
             }
+            catchAnalyzer: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Catch Posture Analyzer"}}}) {
+              ...markdownInfo
+            }
           }
         `
       }
@@ -97,11 +101,11 @@ class Display extends Component {
                 <br/>
                 <Link
                   className="header-link"
-                  to={data.musicColour.edges[0].node.fields.slug}
+                  to={data.catchAnalyzer.edges[0].node.fields.slug}
                 >
                   <Text
-                    input={data.musicColour.edges[0].node.frontmatter.title}
-                    hoverArg='musicColourIsHovering'
+                    input={data.catchAnalyzer.edges[0].node.frontmatter.title}
+                    hoverArg='catchAnalyzerIsHovering'
                     handleMouseEnter={this.handleMouseEnter.bind(this)}
                     handleMouseLeave={this.handleMouseLeave.bind(this)}
                   />
@@ -114,6 +118,18 @@ class Display extends Component {
                   <Text
                     input={data.citizenHacks.edges[0].node.frontmatter.title}
                     hoverArg='citizenHacksIsHovering'
+                    handleMouseEnter={this.handleMouseEnter.bind(this)}
+                    handleMouseLeave={this.handleMouseLeave.bind(this)}
+                  />
+                </Link>
+                <br/>
+                <Link
+                  className="header-link"
+                  to={data.musicColour.edges[0].node.fields.slug}
+                >
+                  <Text
+                    input={data.musicColour.edges[0].node.frontmatter.title}
+                    hoverArg='musicColourIsHovering'
                     handleMouseEnter={this.handleMouseEnter.bind(this)}
                     handleMouseLeave={this.handleMouseLeave.bind(this)}
                   />
@@ -166,15 +182,15 @@ class Display extends Component {
               </div>
               <div className={displayStyles.centerMargin}/>
               <div className={displayStyles.images}>
-                <video autoplay="autoplay" loop style={{width: '100%', display: this.state.musicColourIsHovering, margin: '0 auto'}}>
-                  <source src="static/synesthesia-demo.mp4" type="video/mp4"/>
-                  <source src="static/synesthesia-demo.ogg" type="video/ogg"/>
-                  Your browser does not support the video tag.
-                </video>
+                <Photo
+                  imagePath="static/catch-analyzer-image.gif"
+                  styles={{width: '100%',  display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}
+                />
                 <div className={displayStyles.description} style={{
-                  display: this.state.musicColourIsHovering,
+                  display: this.state.catchAnalyzerIsHovering,
+                  top: '1rem',
                 }}>
-                  <i>{data.musicColour.edges[0].node.frontmatter.description}</i>
+                  <i>{data.catchAnalyzer.edges[0].node.frontmatter.description}</i>
                 </div>
                 <Photo
                   imagePath='static/citizen-hacks-fast.gif'
@@ -184,6 +200,16 @@ class Display extends Component {
                   display: this.state.citizenHacksIsHovering,
                 }}>
                   <i>{data.citizenHacks.edges[0].node.frontmatter.description}</i>
+                </div>
+                <video autoplay="autoplay" loop style={{width: '100%', display: this.state.musicColourIsHovering, margin: '0 auto'}}>
+                  <source src="static/synesthesia-demo.mp4" type="video/mp4"/>
+                  <source src="static/synesthesia-demo.ogg" type="video/ogg"/>
+                  Your browser does not support the video tag.
+                </video>
+                <div className={displayStyles.description} style={{
+                  display: this.state.musicColourIsHovering,
+                }}>
+                  <i>{data.musicColour.edges[0].node.frontmatter.description}</i>
                 </div>
                 <Photo
                   imagePath={data.sonataImage.childImageSharp.fluid}
@@ -235,11 +261,11 @@ class Display extends Component {
                 <div>WORK</div>
                 <br/>
                 <Link
+                  to={data.catchAnalyzer.edges[0].node.fields.slug}
                   className="header-link"
-                  to={data.musicColour.edges[0].node.fields.slug}
                 >
-                  {data.musicColour.edges[0].node.frontmatter.title}<br/>
-                  <i>{data.musicColour.edges[0].node.frontmatter.description}</i>
+                  {data.catchAnalyzer.edges[0].node.frontmatter.title}<br/>
+                  <i>{data.catchAnalyzer.edges[0].node.frontmatter.description}</i>
                 </Link>
                 <br/>
                 <br/>
@@ -249,6 +275,15 @@ class Display extends Component {
                 >
                   {data.citizenHacks.edges[0].node.frontmatter.title}<br/>
                   <i>{data.citizenHacks.edges[0].node.frontmatter.description}</i>
+                </Link>
+                <br/>
+                <br/>
+                <Link
+                  className="header-link"
+                  to={data.musicColour.edges[0].node.fields.slug}
+                >
+                  {data.musicColour.edges[0].node.frontmatter.title}<br/>
+                  <i>{data.musicColour.edges[0].node.frontmatter.description}</i>
                 </Link>
                 <br/>
                 <br/>
