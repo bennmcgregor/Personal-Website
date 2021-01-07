@@ -182,10 +182,11 @@ class Display extends Component {
               </div>
               <div className={displayStyles.centerMargin}/>
               <div className={displayStyles.images}>
-                <Photo
-                  imagePath="static/catch-analyzer-image-small.gif"
-                  styles={{width: '100%',  display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}
-                />
+                <video autoplay="autoplay" loop style={{width: '100%', display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}>
+                  <source src="static/catch-analyzer.mp4" type="video/mp4"/>
+                  <source src="static/catch-analyzer.ogg" type="video/ogg"/>
+                  Your browser does not support the video tag.
+                </video>
                 <div className={displayStyles.description} style={{
                   display: this.state.catchAnalyzerIsHovering,
                   top: '1rem',

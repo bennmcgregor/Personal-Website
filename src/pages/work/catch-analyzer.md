@@ -13,7 +13,11 @@ Check out the [Google Colab demo document](https://colab.research.google.com/dri
 &nbsp;  
 &nbsp;  
 
-![Pose Data Overlay](../../assets/work/catch-analyzer-image-small.gif)
+<video autoplay="autoplay" loop>
+  <source src="../../assets/work/catch-analyzer.mp4" type="video/mp4"/>
+  <source src="../../assets/work/catch-analyzer.webm" type="video/webm"/>
+  Your browser does not support the video tag.
+</video>
 <div><i>A visualization of the pose data used to identify the catch position</i></div>
 </div>  
 &nbsp;  
