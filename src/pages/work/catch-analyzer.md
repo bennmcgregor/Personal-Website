@@ -1,6 +1,6 @@
 ---
 title: "Catch Posture Analyzer"
-image: "work/catch-analyzer-image-small.gif"
+image: "work/catch-analyzer-pose-data.jpg"
 description: "A machine learning app for analyzing posture while rowing"
 ---
 

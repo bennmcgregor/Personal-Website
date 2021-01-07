@@ -70,9 +70,6 @@ class Display extends Component {
             musicColour: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Synesthesia"}}}) {
               ...markdownInfo
             }
-            musicColourImage: file(relativePath: { eq: "work/idontunderstand.jpg" }) {
-              ...imageInfo
-            }
             sonataImage: file(relativePath: { eq: "work/sonata-preview.jpeg" }) {
               ...imageInfo
             }
@@ -87,6 +84,9 @@ class Display extends Component {
             }
             catchAnalyzer: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Catch Posture Analyzer"}}}) {
               ...markdownInfo
+            }
+            catchAnalyzerImage: file(relativePath: { eq: "work/catch-analyzer.jpg" }) {
+              ...imageInfo
             }
           }
         `
@@ -182,11 +182,10 @@ class Display extends Component {
               </div>
               <div className={displayStyles.centerMargin}/>
               <div className={displayStyles.images}>
-                <video autoplay="autoplay" loop style={{width: '100%', display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}>
-                  <source src="static/catch-analyzer.mp4" type="video/mp4"/>
-                  <source src="static/catch-analyzer.ogg" type="video/ogg"/>
-                  Your browser does not support the video tag.
-                </video>
+                <Photo
+                  imagePath={data.catchAnalyzerImage.childImageSharp.fluid}
+                  styles={{display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}
+                />
                 <div className={displayStyles.description} style={{
                   display: this.state.catchAnalyzerIsHovering,
                   top: '1rem',
