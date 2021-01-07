@@ -1,6 +1,6 @@
 ---
 title: "Catch Posture Analyzer"
-image: "work/catch-analyzer-image.gif"
+image: "work/catch-analyzer-image-small.gif"
 description: "A machine learning app for analyzing posture while rowing"
 ---
 
@@ -13,7 +13,7 @@ Check out the [Google Colab demo document](https://colab.research.google.com/dri
 &nbsp;  
 &nbsp;  
 
-![Pose Data Overlay](../../assets/work/catch-analyzer-image.gif)
+![Pose Data Overlay](../../assets/work/catch-analyzer-image-small.gif)
 <div><i>A visualization of the pose data used to identify the catch position</i></div>
 </div>  
 &nbsp;  
