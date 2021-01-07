@@ -183,7 +183,7 @@ class Display extends Component {
               <div className={displayStyles.centerMargin}/>
               <div className={displayStyles.images}>
                 <Photo
-                  imagePath="static/catch-analyzer-image.gif"
+                  imagePath="static/catch-analyzer-image-small.gif"
                   styles={{width: '100%',  display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}
                 />
                 <div className={displayStyles.description} style={{
