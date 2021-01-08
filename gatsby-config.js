@@ -66,5 +66,6 @@ module.exports = {
         logo: './src/assets/general/logo.png',
       },
     },
+    'gatsby-plugin-client-side-redirect' // keep it in last in list
   ],
 }

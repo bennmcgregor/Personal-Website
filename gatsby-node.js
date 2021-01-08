@@ -14,7 +14,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 }
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
+
+  // pages that redirect
+  createRedirect({ fromPath: '/links/catch-analyzer-colab', toPath: 'https://colab.research.google.com/drive/1ULC7FAizUZT4mYWlnpTU27xF79OEBDNm?usp=sharing', isPermanent: true });
+
   return new Promise((resolve, reject) => {
     graphql(`
       {
