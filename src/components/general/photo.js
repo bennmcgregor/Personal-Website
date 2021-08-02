@@ -7,6 +7,7 @@ class Photo extends Component {
   render() {
     if (this.props.imagePath !== null) {
       if (typeof this.props.imagePath === 'string') {
+        console.log(this.props.imagePath);
         return (
           <img src={this.props.imagePath} alt="" style={this.props.styles ? this.props.styles : null}></img>
         );

@@ -11,12 +11,12 @@ const IndexPage = () => (
   <>
     <SEO title="hello" keywords-={['gatsby', 'application', 'react']} />
     <Layout>
-      <a name="home" href="/#home"/>
+      <a name="home" id="home"/>
       <Header displayType='main'/>
       <Synesthesia />
-      <a name="work" href="/#work"/>
+      <a name="work" id="work"/>
       <Display />
-      <a name="about" href="/#about"/>
+      <a name="about" id="about"/>
       <About />
     </Layout>
   </>

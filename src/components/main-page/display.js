@@ -3,8 +3,9 @@ import { StaticQuery, Link, graphql } from "gatsby"
 import Photo from '../general/photo'
 import Text from '../general/text'
 import displayStyles from '../css/main-page/display.module.css'
-
-//TODO add animations
+import citizenHacksGIF from '../../assets/work/citizen-hacks-fast.gif'
+import synesthesiaMp4 from '../../assets/work/synesthesia-demo.mp4'
+import synesthesiaWebm from '../../assets/work/synesthesia-demo.webm'
 
 class Display extends Component {
   constructor(props) {
@@ -193,7 +194,7 @@ class Display extends Component {
                   <i>{data.catchAnalyzer.edges[0].node.frontmatter.description}</i>
                 </div>
                 <Photo
-                  imagePath='static/citizen-hacks-fast.gif'
+                  imagePath={citizenHacksGIF}
                   styles={{width: '100%', display: this.state.citizenHacksIsHovering, margin: '0 auto'}}
                 />
                 <div className={displayStyles.description} style={{
@@ -201,9 +202,9 @@ class Display extends Component {
                 }}>
                   <i>{data.citizenHacks.edges[0].node.frontmatter.description}</i>
                 </div>
-                <video autoplay="autoplay" loop style={{width: '100%', display: this.state.musicColourIsHovering, margin: '0 auto'}}>
-                  <source src="static/synesthesia-demo.mp4" type="video/mp4"/>
-                  <source src="static/synesthesia-demo.ogg" type="video/ogg"/>
+                <video id="synesthesiaVid" autoPlay muted loop style={{width: '100%', display: this.state.musicColourIsHovering, margin: '0 auto'}}>
+                  <source src={synesthesiaMp4} type="video/mp4"/>
+                  <source src={synesthesiaWebm} type="video/webm"/>
                   Your browser does not support the video tag.
                 </video>
                 <div className={displayStyles.description} style={{
