@@ -8,6 +8,7 @@ import templateStyles from '../components/css/description-template.module.css'
 
 export default ({ data }) => {
   const post = data.markdownRemark;
+  console.log(post)
   return (
     <Layout>
       <SEO title={post.frontmatter.title} keywords-={['gatsby', 'application', 'react']}/>
