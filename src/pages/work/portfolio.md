@@ -34,4 +34,4 @@ _Creative + Technical Portfolio_
 &nbsp;  
 &nbsp;  
 
-[View my CV here](https://www.dropbox.com/s/pq5xvrmin05b138/resume-v3.pdf?dl=0), which includes more references to my game development work. You can also look through my [LinkedIn page](https://www.linkedin.com/in/benn-mcgregor/) for a more extensive list of experiences.
+[View my CV here](https://www.dropbox.com/s/15cm1xkucrj51yd/resume-v3-ordered.pdf?dl=0), which includes more references to my game development work. You can also look through my [LinkedIn page](https://www.linkedin.com/in/benn-mcgregor/) for a more extensive list of experiences.
