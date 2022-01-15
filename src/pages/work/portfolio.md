@@ -24,14 +24,19 @@ _Creative + Technical Portfolio_
 &nbsp;  
 &nbsp;  
 
-4.  A hackathon I organized with my friends in 2019 about privacy in technology: [bennmcgregor.com/work/citizen-hacks/](https://bennmcgregor.com/work/citizen-hacks/).
+4. The UX design for Novii, an online educational platform for learning about the COVID-19 vaccines and other timely and relevant topics. Me and my collaborators published an [article describing our design process](https://medium.com/cs449-649-f21-uwaterloo/cs-449-final-report-c8feba63553f), including background research, ideation, prototyping, and testing. You can also view a [demo video of the finished prototype](https://drive.google.com/file/d/1-2qSbndLfD-mEq2eoJ6YrolYc9MZsQqB/view?usp=sharing), which was created with Figma.
 &nbsp;  
 &nbsp;  
 &nbsp;  
 
-5.  A piano sonata I composed and performed in 2018: [bennmcgregor.com/sonata](https://bennmcgregor.com/sonata).
+5.  Citizen Hacks, a hackathon I organized with my friends in 2019 about privacy in technology: [bennmcgregor.com/work/citizen-hacks/](https://bennmcgregor.com/work/citizen-hacks/).
 &nbsp;  
 &nbsp;  
 &nbsp;  
 
-[View my CV here](https://www.dropbox.com/s/15cm1xkucrj51yd/resume-v3-ordered.pdf?dl=0), which includes more references to my game development work. You can also look through my [LinkedIn page](https://www.linkedin.com/in/benn-mcgregor/) for a more extensive list of experiences.
+6.  A piano sonata I composed and performed in 2018: [bennmcgregor.com/sonata](https://bennmcgregor.com/sonata).
+&nbsp;  
+&nbsp;  
+&nbsp;  
+
+[View my CV here](https://www.dropbox.com/s/2d1nq8yp9ko8x8o/resume-v5.pdf?dl=0), which includes more references to my game and software development work. You can also look through my [LinkedIn page](https://www.linkedin.com/in/benn-mcgregor/) for a more extensive list of experiences.
