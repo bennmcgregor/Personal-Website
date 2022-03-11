@@ -54,3 +54,60 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/canarybenn
 
 ==================================================================
+
+==================================================================
+https://keybase.io/bennmcgregorzoom
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://bennmcgregor.com
+  * I am bennmcgregorzoom (https://keybase.io/bennmcgregorzoom) on keybase.
+  * I have a public key ASBUXJU8uxk9gfuK3zV8LF6Kb40wFwmvkt3DO6uGLxI0iAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120545c953cbb193d81fb8adf357c2c5e8a6f8d301709af92ddc33bab862f1234880a",
+      "host": "keybase.io",
+      "kid": "0120545c953cbb193d81fb8adf357c2c5e8a6f8d301709af92ddc33bab862f1234880a",
+      "uid": "8d10c5727ed4f91ea6fe9bb947233919",
+      "username": "bennmcgregorzoom"
+    },
+    "merkle_root": {
+      "ctime": 1647039829,
+      "hash": "d4b6980882cc7060dac683f8870d4a81cca10fb705a114fc6e2f0552e72a0978397212eaccd125174e95a63164944e8b5f642c3b2d9491ff53c6e2422c02a619",
+      "hash_meta": "b77698fcac2f28545224ac7f8b91067d67f328ffe135fc791bb764136a23c338",
+      "seqno": 22061434
+    },
+    "service": {
+      "entropy": "0xQi+pQQBer4r0MFK6xyCaEK",
+      "hostname": "bennmcgregor.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.9.0"
+  },
+  "ctime": 1647039853,
+  "expire_in": 504576000,
+  "prev": "bdd17f273de2d7afd9919ad5b951475601fd492f0da61ab827cbdc292bb75677",
+  "seqno": 24,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgVFyVPLsZPYH7it81fCxeim+NMBcJr5Ldwzurhi8SNIgKp3BheWxvYWTESpcCGMQgvdF/Jz3i16/ZkZrVuVFHVgH9SS8Nphq4J8vcKSu3VnfEIIQj0iNghdcb5JqkJnJmN64oYqMfuhjjz4VgR4GywWInAgHCo3NpZ8RAD+MlCJldiqdZZfy+lji36Srkp4PG3LF7IiWqe+Tn8EdIRk4mrnvSoatxkI4E01yWvh148KZ3NSkAXJbzW7CJCKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIG+O6mPfawkLH0vQHdVx2r8G/wFDkNrXovaIOLCDeCT2o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bennmcgregorzoom
+
+==================================================================
