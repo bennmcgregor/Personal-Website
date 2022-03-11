@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/canarybenn
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://bennmcgregor.com
+  * I am canarybenn (https://keybase.io/canarybenn) on keybase.
+  * I have a public key ASBtOHCPAswdATzShNxWCMVblN3VYZ3tsOWcaf-9vqJy0Ao
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01206d38708f02cc1d013cd284dc5608c55b94ddd5619dedb0e59c69ffbdbea272d00a",
+      "host": "keybase.io",
+      "kid": "01206d38708f02cc1d013cd284dc5608c55b94ddd5619dedb0e59c69ffbdbea272d00a",
+      "uid": "7b96011b1da168ea0ad8743cd0642b19",
+      "username": "canarybenn"
+    },
+    "merkle_root": {
+      "ctime": 1647038444,
+      "hash": "e20fe8724544d26569ad8f04e1c24c4422534c7cee879deb89b8c218ac6336a529f322ff7ec169bfbcbf872be56b9362436a0c94c5a4169c5abba848ef6fc6d4",
+      "hash_meta": "6fbbaf03b61f006dcbdb172477946cc2ab36b05bbc46449415a8f673055a3cbb",
+      "seqno": 22061326
+    },
+    "service": {
+      "entropy": "tFz+soFZQTK/Wc8jfeWmQrLb",
+      "hostname": "bennmcgregor.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.9.2"
+  },
+  "ctime": 1647038478,
+  "expire_in": 504576000,
+  "prev": "c579f408e0015515b118c7adfb2358c15b886e7093bbffdcb98260e168160b4c",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgbThwjwLMHQE80oTcVgjFW5Td1WGd7bDlnGn/vb6ictAKp3BheWxvYWTESpcCBcQgxXn0COABVRWxGMet+yNYwVuIbnCTu//cuYJg4WgWC0zEIK6R4n+7dCn7Dk25wuaoT7GNa7tZsXlQF5A6NZnDECXlAgHCo3NpZ8RAS/jNF4Ul6ll3C8ouVe/mjZYuS5Oi1FPSn+v4tEd7XY/+KdFpLVJHUKmKayNgMjez99qw2R39dzuIfpRzDTdbAKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPkQx/fD3M51oZ5hYTCGK1S4c4kQBkv7WKVLhD7PGFIOo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/canarybenn
+
+==================================================================
