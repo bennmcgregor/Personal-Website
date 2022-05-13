@@ -6,6 +6,7 @@ import displayStyles from '../css/main-page/display.module.css'
 import citizenHacksGIF from '../../assets/work/citizen-hacks-fast.gif'
 import synesthesiaMp4 from '../../assets/work/synesthesia-demo.mp4'
 import synesthesiaWebm from '../../assets/work/synesthesia-demo.webm'
+import rowGameGIF from '../../assets/work/row.gif'
 
 class Display extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Display extends Component {
       citizenHacksIsHovering: 'none',
       musicColourIsHovering: 'none',
       catchAnalyzerIsHovering: 'none',
+      rowGameIsHovering: 'none',
       sonataIsHovering: 'none',
       tedTalkIsHovering: 'none',
       soundCloudIsHovering: 'none',
@@ -89,6 +91,9 @@ class Display extends Component {
             catchAnalyzerImage: file(relativePath: { eq: "work/catch-analyzer.jpg" }) {
               ...imageInfo
             }
+            rowGame: allMarkdownRemark(filter: {frontmatter: {title: {eq: "Row"}}}) {
+              ...markdownInfo
+            }
           }
         `
       }
@@ -99,6 +104,18 @@ class Display extends Component {
               <div className="right-margin"/>
               <div className={displayStyles.links}>
                 <div>WORK</div>
+                <br/>
+                <Link
+                  className="header-link"
+                  to={data.rowGame.edges[0].node.fields.slug}
+                >
+                  <Text
+                    input={data.rowGame.edges[0].node.frontmatter.title}
+                    hoverArg='rowGameIsHovering'
+                    handleMouseEnter={this.handleMouseEnter.bind(this)}
+                    handleMouseLeave={this.handleMouseLeave.bind(this)}
+                  />
+                </Link>
                 <br/>
                 <Link
                   className="header-link"
@@ -184,6 +201,16 @@ class Display extends Component {
               <div className={displayStyles.centerMargin}/>
               <div className={displayStyles.images}>
                 <Photo
+                  imagePath={rowGameGIF}
+                  styles={{display: this.state.rowGameIsHovering, margin: '0 auto'}}
+                />
+                <div className={displayStyles.description} style={{
+                  display: this.state.rowGameIsHovering,
+                  top: '1rem',
+                }}>
+                  <i>{data.rowGame.edges[0].node.frontmatter.description}</i>
+                </div>
+                <Photo
                   imagePath={data.catchAnalyzerImage.childImageSharp.fluid}
                   styles={{display: this.state.catchAnalyzerIsHovering, margin: '0 auto'}}
                 />
@@ -260,6 +287,15 @@ class Display extends Component {
             <div className={displayStyles.links}>
               <div className={displayStyles.mobileText}>
                 <div>WORK</div>
+                <br/>
+                <Link
+                  to={data.rowGame.edges[0].node.fields.slug}
+                  className="header-link"
+                >
+                  {data.rowGame.edges[0].node.frontmatter.title}<br/>
+                  <i>{data.rowGame.edges[0].node.frontmatter.description}</i>
+                </Link>
+                <br/>
                 <br/>
                 <Link
                   to={data.catchAnalyzer.edges[0].node.fields.slug}
