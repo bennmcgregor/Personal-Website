@@ -20,7 +20,7 @@ A short narrative RPG that was [submitted](https://itch.io/jam/climate-jam-2022/
 
 It was made in collaboration with students from USC's School of Cinematic Arts, NYU's Tisch School of the Arts, University of Waterloo, and University of Toronto. I was primarily involved in game and narrative design, as well as being one of two programmers.
 
-You can [play the game on itch.io](https://canarybenn.itch.io/row) with a desktop computer. Watch the video below for a more in-depth description of the game and our development process.
+You can [play the game on itch.io](https://canarybenn.itch.io/row) with a desktop computer. Watch the video for a more in-depth description of the game and our development process.
 &nbsp;  
 &nbsp;  
 &nbsp;  
