@@ -9,7 +9,7 @@ _Creative + Technical Portfolio_
 &nbsp;  
 &nbsp;  
 
-1.  A [short narrative RPG inspired by the climate crisis](https://canarybenn.itch.io/row), developed in Unity as a submission to the [2022 IndieCade Climate Jam](https://www.indiecade.com/climate-jam/): [bennmcgregor.com/work/row](https://bennmcgregor.com/work/row/). I did programming and game & narrative design.
+1.  A [short narrative RPG inspired by the climate crisis](https://beagle-studios.itch.io/row), developed in Unity as a submission to the [2022 IndieCade Climate Jam](https://www.indiecade.com/climate-jam/): [bennmcgregor.com/work/row](https://bennmcgregor.com/work/row/). I did programming and game & narrative design.
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -44,4 +44,4 @@ _Creative + Technical Portfolio_
 &nbsp;  
 &nbsp;  
 
-[View my CV here](https://www.dropbox.com/s/oi1gxq9uxvbyi66/resume-may.pdf?dl=0), which includes more references to my game and software development work. You can also look through my [LinkedIn page](https://www.linkedin.com/in/benn-mcgregor/) for a more extensive list of experiences.
+[View my CV here](https://www.dropbox.com/s/4te5bgwihy00dne/resume-v1.pdf?dl=0), which includes more references to my game and software development work. You can also look through my [LinkedIn page](https://www.linkedin.com/in/benn-mcgregor/) for a more extensive list of experiences.

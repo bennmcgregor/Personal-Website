@@ -16,11 +16,11 @@ _Row_
 &nbsp;  
 &nbsp;  
 
-A short narrative RPG that was [submitted](https://itch.io/jam/climate-jam-2022/rate/1511021) to the [IndieCade Climate Jam](https://www.indiecade.com/climate-jam/) and the [Horizons 2022 Grand Challenge](https://www.indiecade.com/horizons-2022-grand-challenge/). It’s a game about two enemies learning to trust one another as they fight for survival in a near-future climate dystopia. The game won the grand jury award (the top award) at the IndieCade Climate Jam.
+A short narrative RPG that was [submitted](https://itch.io/jam/climate-jam-2022/rate/1511021) to the [IndieCade Climate Jam](https://www.indiecade.com/climate-jam/) and the [Horizons 2022 Grand Challenge](https://www.indiecade.com/horizons-2022-grand-challenge/). It’s a game about two enemies learning to trust one another as they fight for survival in a near-future climate dystopia. The game won the [grand jury award](https://itch.io/jam/climate-jam-2022/rate/1511021) (the top award) at the IndieCade Climate Jam.
 
 It was made in collaboration with students from USC's School of Cinematic Arts, NYU's Tisch School of the Arts, University of Waterloo, and University of Toronto. I was primarily involved in game and narrative design, as well as being one of two programmers.
 
-You can [play the game on itch.io](https://canarybenn.itch.io/row) with a desktop computer. Watch the video for a more in-depth description of the game and our development process.
+You can [play the game on itch.io](https://beagle-studios.itch.io/row) with a desktop computer. You can also subscribe to our mailing list on the [website of our studio](https://www.beaglestudios.net/), Beagle Studios.
 &nbsp;  
 &nbsp;  
 &nbsp;  
